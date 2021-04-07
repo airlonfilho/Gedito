@@ -41,7 +41,7 @@ public class AlunoRestController {
 		return alunoService.atualizar(matricula, aluno);
 	}
 	
-	@DeleteMapping("/matricula")
+	@DeleteMapping("/{matricula}")
 	public ResponseEntity<?> deletar(@PathVariable Integer matricula) {
 		return alunoService.deletar(matricula);
 	}

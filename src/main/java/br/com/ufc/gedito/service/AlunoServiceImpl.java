@@ -1,5 +1,7 @@
 package br.com.ufc.gedito.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -72,11 +74,12 @@ public class AlunoServiceImpl implements AlunoService {
 	}
 
 	@Override
+	@Transactional 
 	public ResponseEntity<?> deletar(Integer matricula) {
 		try {
-			if(alunoRepository.existsByMatricula(matricula) ) {
+			if(alunoRepository.existsByMatricula(matricula)) {
 				alunoRepository.deleteByMatricula(matricula);
-				return ResponseEntity.status(HttpStatus.OK).body("Aluno com matrícula" + matricula + "deletado");
+				return ResponseEntity.status(HttpStatus.OK).body("Aluno com matrícula " + matricula + " deletado");
 			}else {
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Aluno não encontrado.");
 			}
