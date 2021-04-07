@@ -7,10 +7,12 @@ import javax.persistence.Id;
 
 @Entity
 public class Aluno extends Usuario {
-	private static final long serialVersionUID = 4727540716887266983L;
+private static final long serialVersionUID = 6988872744369064928L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
 	private Integer matricula;
 	private String curso;
 	
@@ -23,6 +25,16 @@ public class Aluno extends Usuario {
 		this.curso = curso;
 		this.matricula = matricula;
 	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 
 	public String getCurso() {
 		return curso;
@@ -41,3 +53,4 @@ public class Aluno extends Usuario {
 	}
 	
 }
+
